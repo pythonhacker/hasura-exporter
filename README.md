@@ -1,5 +1,7 @@
 # Hasura Exporter
 
+<img src="examples/grafana-dashboard.png" />
+
 A lightweight Prometheus exporter for monitoring **Hasura GraphQL Engine** health and metadata consistency.
 
 This exporter exposes basic but high-value metrics for detecting:
