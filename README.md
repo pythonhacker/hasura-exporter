@@ -153,7 +153,42 @@ scrape_configs:
 
 ## 📊 Grafana Usage (Recommended)
 
-Use the `grafana.json` for a recommended dashboard.
+Use the included `grafana.json` for a default dashboard.
+
+---
+
+## System V user daemon
+
+The simplest way to run this is as a System V user service.
+Copy the following into the file `~/.config/systemd/user/hasura-exporter.service`.
+
+```
+[Unit]
+Description=Run once after boot (user)
+
+[Service]
+Type=oneshot
+Environment="HASURA_GRAPHQL_ADMIN_SECRET=<hasura admin secret>"
+ExecStart=python3 <path>/hasura_exporter.py 2>/dev/null &
+
+[Install]
+WantedBy=default.target
+```
+
+Enable it.
+
+```
+systemctl --user daemon-reload
+systemctl --user enable hasura-exporter.service
+loginctl enable-linger $USER
+```
+
+Start it and check status.
+
+```
+systemctl --user start hasura_exporter.service
+systemctl --user status hasura_exporter.service
+```
 
 ---
 
