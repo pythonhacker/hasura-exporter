@@ -98,7 +98,7 @@ pip install -r requirements.txt
 ### Run exporter
 
 ```
-python hasura_exporter.py
+python exporter.py
 ```
 
 Exporter will be available at:
@@ -171,7 +171,7 @@ Description=Run once after boot (user)
 [Service]
 Type=oneshot
 Environment="HASURA_GRAPHQL_ADMIN_SECRET=<hasura admin secret>"
-ExecStart=python3 <path>/hasura_exporter.py 2>/dev/null &
+ExecStart=python3 <path>/exporter.py 2>/dev/null &
 
 [Install]
 WantedBy=default.target
